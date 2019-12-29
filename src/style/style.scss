@@ -1,0 +1,232 @@
+html,body{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #eeee;
+  display: flex;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+  &:hover{
+    color: white;
+  }
+}
+
+input:focus{
+  border:0 solid transparent;
+  outline:none
+}
+
+#root{
+  width: 100%;
+  background-color: white;
+}
+
+.container{
+  height: 100%;
+  display: flex;
+  flex-direction: column
+}
+
+.header{
+  min-height: 60px;
+  display: flex;
+  flex-direction: row;
+  background-color: #4cb6cb;
+  padding: 0 20px;
+}
+
+.header-title{
+  align-items: center;
+  background-color: #4cb6cb;
+  display: flex;
+  flex: 0 1 150px;
+  color: #ffff;
+  font-family: 'Solway', serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.header-link{
+  display: flex;
+  flex: 2;
+  align-items: center;
+  ul{
+    list-style: none;
+    display: inherit;
+    li+li{
+      margin: 0 10px;
+    }
+  }
+}
+
+.home-page{
+  flex: 1;
+  background-image:url(./image/banner.jpg);
+  display: flex;
+  flex-direction: column;
+  h1{
+    flex: 1;
+    color: white;
+    text-align: center;
+    display: flex;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.searchbox{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  input{
+    border: 0px;
+    padding: 15px;
+    width: 80%;
+  }
+}
+
+.searchButton{
+  flex: 1;
+  align-self: center;
+  color: #777676;
+  cursor: pointer;
+  text-align: center;
+}
+
+.search-button{
+  cursor: pointer;
+  background-color: #4cb6cb;
+  color: #f7f7f7;
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-items: center;
+
+  &:hover{
+    background-color: #2fa8c0;
+    font-weight: 600;
+  }
+}
+
+.content{
+  flex: 1;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 20px;
+  flex-direction: column;
+
+  h2{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px
+  }
+  .content-title{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0px;;
+  }
+  &.search-result{
+    align-items: flex-start;
+    justify-content: flex-start;
+    .result{
+      flex: 1;
+      width: 100%;
+      margin-bottom: 10px;
+
+      .result-item{
+        display: flex;
+        padding: 10px;
+        margin: 10px 0px;
+        color: #144277;
+        background: #eee;
+
+        img{
+          width: 100px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.chart{
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
+
+  img{
+    width: 100%
+  }
+  p{
+    color: #3f3f3f;
+    margin: 5px 0px;
+  }
+
+  &:hover{
+    width: 185px;
+    background: #f7f7f7; 
+    box-shadow:5px 6px 10px #cecece;
+  }
+}
+
+.content-part{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer{
+  background-color: #45bad5;
+  color: #f7f7f7;
+  padding: 10px;
+  text-align: center;
+  p+p{
+    margin-top: 10px;
+  }
+}
+
+
+// Song list
+.song-item{
+  border-bottom:1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  cursor: pointer;
+  &.playing{
+    background-color: #2fa8c0;
+  }
+  &:hover{
+    padding: 10px;
+  }
+
+}
+
+.song-name{
+  font-weight: 600;
+}
+.song-status{
+  align-self: center;
+  svg{
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+
+.songplayer{
+  width: 100%;
+  height: 500px;
+}

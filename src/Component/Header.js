@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { FiHeadphones, FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom"
+import { FiHeadphones } from "react-icons/fi";
 
 
 export class Header extends Component {
@@ -8,16 +9,15 @@ export class Header extends Component {
       <div className="header">
         <div className="header-title">
           <FiHeadphones />&nbsp;
-          <span>Music</span>
-        </div>
-        <div className="header-searchbox">
-          <div className="searchbox">
-            <input placeholder="Search......" style={{ flex: 5 }} />
-            <div className="searchButton"><FiSearch /></div>
-          </div>
-          <div style={{ color: '#b9b7b7'}}>About Me</div>
+            <Link to="/"><span>Music</span></Link>
         </div>
 
+        <div className="header-link">
+          <ul>
+            <li><Link to="/chart">排行榜</Link></li>
+            {/* <li><Link to="/playerlist">播放清單</Link></li> */}
+          </ul>
+        </div>
       </div>
 
     )

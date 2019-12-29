@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/music-app/static/css/main.65fd8923.chunk.css",
-    "main.js": "/music-app/static/js/main.f8df7d22.chunk.js",
-    "main.js.map": "/music-app/static/js/main.f8df7d22.chunk.js.map",
+    "main.css": "/music-app/static/css/main.b5016718.chunk.css",
+    "main.js": "/music-app/static/js/main.299b7468.chunk.js",
+    "main.js.map": "/music-app/static/js/main.299b7468.chunk.js.map",
     "runtime-main.js": "/music-app/static/js/runtime-main.2a258812.js",
     "runtime-main.js.map": "/music-app/static/js/runtime-main.2a258812.js.map",
-    "static/js/2.88ffffb9.chunk.js": "/music-app/static/js/2.88ffffb9.chunk.js",
-    "static/js/2.88ffffb9.chunk.js.map": "/music-app/static/js/2.88ffffb9.chunk.js.map",
+    "static/js/2.fe83860c.chunk.js": "/music-app/static/js/2.fe83860c.chunk.js",
+    "static/js/2.fe83860c.chunk.js.map": "/music-app/static/js/2.fe83860c.chunk.js.map",
     "index.html": "/music-app/index.html",
-    "precache-manifest.a3cc6cc2b8a74a6884c46cedb5e6c7ac.js": "/music-app/precache-manifest.a3cc6cc2b8a74a6884c46cedb5e6c7ac.js",
+    "precache-manifest.8217110274636cbf4f06249e4ed8cc33.js": "/music-app/precache-manifest.8217110274636cbf4f06249e4ed8cc33.js",
     "service-worker.js": "/music-app/service-worker.js",
-    "static/css/main.65fd8923.chunk.css.map": "/music-app/static/css/main.65fd8923.chunk.css.map"
+    "static/css/main.b5016718.chunk.css.map": "/music-app/static/css/main.b5016718.chunk.css.map",
+    "static/media/style.scss": "/music-app/static/media/banner.bbd2f9ec.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.2a258812.js",
-    "static/js/2.88ffffb9.chunk.js",
-    "static/css/main.65fd8923.chunk.css",
-    "static/js/main.f8df7d22.chunk.js"
+    "static/js/2.fe83860c.chunk.js",
+    "static/css/main.b5016718.chunk.css",
+    "static/js/main.299b7468.chunk.js"
   ]
 }

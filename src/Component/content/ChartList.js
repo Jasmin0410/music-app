@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import Chart from './Chart'
 import { Loading } from '../common/Loading';
-import * as process from '../../env';
+import { getKKBoxToken } from '../common/GetToken';
 
 class ChartList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      charts: ''
+      charts: '',
+      token: ''
     };
   }
 
   componentDidMount() {
-    fetch('https://api.kkbox.com/v1.1/charts?territory=TW', {
-      headers: {
-        Authorization: `Bearer ${process.REACT_APP_CLIENT_TOKEN}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ charts: data.data })
+    getKKBoxToken()
+      .then(result => {
+        return result['access_token']
+      })
+      .then(token => {
+        fetch('https://api.kkbox.com/v1.1/charts?territory=TW', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(res => { return res.json() })
+          .then(data => {
+            this.setState({ charts: data.data })
+          })
       })
       .catch(err => {
         console.log(err);
@@ -28,7 +35,7 @@ class ChartList extends Component {
 
   render() {
     let charts = this.state.charts.slice(0, 18);
-    if (charts === '') {
+    if (charts === '' || charts === undefined) {
       return <Loading />
     }
 

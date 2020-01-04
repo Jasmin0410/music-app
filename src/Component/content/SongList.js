@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MdPlayCircleFilled, MdPauseCircleOutline } from "react-icons/md";
 
+import { getKKBoxToken } from '../common/GetToken';
 import { Loading } from '../common/Loading';
 import * as process from '../../env';
 
@@ -18,19 +19,40 @@ class SongList extends Component {
 
   componentDidMount() {
     const chartId = this.props.match.params.chartId;
-    fetch(`https://api.kkbox.com/v1.1/charts/${chartId}?territory=TW`, {
-      headers: {
-        Authorization: `Bearer ${process.REACT_APP_CLIENT_TOKEN}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ songs: data.tracks.data, });
-        this.clickSong(data.tracks.data[0].name, data.tracks.data[0].id);
+    getKKBoxToken()
+      .then(result => {
+        return result['access_token']
+      })
+      .then(token => {
+        fetch(`https://api.kkbox.com/v1.1/charts/${chartId}?territory=TW`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(res => { return res.json() })
+          .then(data => {
+            this.setState({ songs: data.tracks.data, });
+            this.clickSong(data.tracks.data[0].name, data.tracks.data[0].id);
+          })
       })
       .catch(err => {
         console.log(err);
       })
+
+
+    // fetch(`https://api.kkbox.com/v1.1/charts/${chartId}?territory=TW`, {
+    //   headers: {
+    //     Authorization: `Bearer ${process.REACT_APP_CLIENT_TOKEN}`
+    //   }
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ songs: data.tracks.data, });
+    //     this.clickSong(data.tracks.data[0].name, data.tracks.data[0].id);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   })
   }
 
   clickSong(songName, songId) {
@@ -83,9 +105,11 @@ class SongList extends Component {
         <div style={{ width: '100%' }}>
           {/*youtube player */}
           <iframe
+            title={this.state.player}
             className="songplayer"
-            src={"https://www.youtube.com/embed/" + this.state.player + "?autoplay=0&enablejsapi=1"}
+            src={"https://www.youtube.com/embed/" + this.state.player + "?autoplay=1&enablejsapi=1"}
             frameBorder="0"
+            allow="autoplay"
           />
 
           {/*song list */}

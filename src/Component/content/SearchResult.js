@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { FiSearch } from "react-icons/fi";
+// import { FiSearch } from "react-icons/fi";
 import { Loading } from '../common/Loading';
+import { getKKBoxToken } from '../common/GetToken';
 
-import * as process from '../../env';
 
 
 export class SearchResult extends Component {
@@ -17,25 +17,31 @@ export class SearchResult extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://api.kkbox.com/v1.1/search?q=${this.state.searchValue}&territory=TW&limit=50`, {
-      headers: {
-        Authorization: `Bearer ${process.REACT_APP_CLIENT_TOKEN}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.albums.data.length === 0 && data.artists.data.length === 0) {
-          this.setState({
-            nodata: true,
-          })
-          return
-        };
-
-        this.setState({
-          searchResultAlbums: data.albums.data,
-          searchResultArtists: data.artists.data,
-          nodata: false
+    getKKBoxToken()
+      .then(result => {
+        return result['access_token']
+      })
+      .then(token => {
+        fetch(`https://api.kkbox.com/v1.1/search?q=${this.state.searchValue}&territory=TW&limit=50`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         })
+          .then(res => { return res.json() })
+          .then(data => {
+            if (data.albums.data.length === 0 && data.artists.data.length === 0) {
+              this.setState({
+                nodata: true,
+              })
+              return
+            };
+
+            this.setState({
+              searchResultAlbums: data.albums.data,
+              searchResultArtists: data.artists.data,
+              nodata: false
+            })
+          })
       })
       .catch(err => {
         console.log(err);
@@ -57,8 +63,8 @@ export class SearchResult extends Component {
 
 
     const renderAlbums = searchResultAlbums.map(albums =>
-      <a className="result-item" href={albums.url} target="_blank" key={albums.id}>
-        <img src={albums.images[0].url} />
+      <a className="result-item" href={albums.url} target="_blank" key={albums.id} rel="noopener noreferrer">
+        <img src={albums.images[0].url} alt =''/>
         <div>
           <p>{albums.name}</p><br />
           <p>{albums.artist.name}</p>
@@ -67,8 +73,8 @@ export class SearchResult extends Component {
     )
 
     const renderArtists = searchResultArtists.map(artist =>
-      <a className="result-item" href={artist.url} target="_blank" key={artist.id}>
-        <img src={artist.images[0].url} />
+      <a className="result-item" href={artist.url} target="_blank" key={artist.id} rel="noopener noreferrer">
+        <img src={artist.images[0].url}  alt =''/>
         <p>{artist.name}</p>
       </a>
     )

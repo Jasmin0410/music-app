@@ -15,11 +15,9 @@ export class Header extends Component {
         <div className="header-link">
           <ul>
             <li><Link to="/chart">排行榜</Link></li>
-            {/* <li><Link to="/playerlist">播放清單</Link></li> */}
           </ul>
         </div>
       </div>
-
     )
   }
 }

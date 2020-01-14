@@ -38,21 +38,6 @@ class SongList extends Component {
       .catch(err => {
         console.log(err);
       })
-
-
-    // fetch(`https://api.kkbox.com/v1.1/charts/${chartId}?territory=TW`, {
-    //   headers: {
-    //     Authorization: `Bearer ${process.REACT_APP_CLIENT_TOKEN}`
-    //   }
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.setState({ songs: data.tracks.data, });
-    //     this.clickSong(data.tracks.data[0].name, data.tracks.data[0].id);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   })
   }
 
   clickSong(songName, songId) {
@@ -64,7 +49,6 @@ class SongList extends Component {
         this.setState({ player: data.items[0].id.videoId, playing: `${songId}` })
       })
       .catch(err => console.log(err))
-
   }
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom"
+import { Route } from "react-router-dom"
 
 import Home from './content/Home';
 import ChartList from './content/ChartList';
@@ -15,12 +15,12 @@ export class Content extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Home} />
+      <React.Fragment>
+        <Route exact path='/' component={Home} />
+        <Route exact path="/chart" component={ChartList} />
         <Route path="/chart/:chartId" component={SongList} />
-        <Route path="/chart" component={ChartList} />
         <Route path="/search/:searchValue" component={SearchResult} />
-      </Switch>
+      </React.Fragment>
     )
   }
 }
